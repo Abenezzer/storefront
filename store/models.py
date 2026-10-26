@@ -26,6 +26,11 @@ class Customer(models.Model):
 
     membership = models.CharField(max_length=1, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_DEFAULT_CHOICE)
 
+class Adress(models.Model):
+    city = models.CharField(max_length=255)
+    street = models.CharField(max_length=255)
+    customer = models.OneToOneField(Customer, on_delete=models.CASCADE, primary_key=True)
+
 class Order(models.Model):
     placed_at = models.DateTimeField(auto_now=True)
 
